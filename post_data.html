@@ -1,10 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+    <h1>Job Application Form</h1>
+    <div class="container">
+        <form action="/api/post-data" method="POST">
+            <!-- Name -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
 
+            <!-- Experience -->
+            <label for="experience">Experience (in years):</label>
+            <input type="number" id="experience" name="experience" required><br>
+
+            <!-- Skills -->
+            <label for="skills">Skills:</label>
+            <input type="text" id="skills" name="skills" required><br>
+
+            <!-- Role -->
+            <label for="role">Role:</label>
+            <input type="text" id="role" name="role" required><br>
+
+            <!-- Salary -->
+            <label for="salary">Salary (in USD):</label>
+            <input type="number" id="salary" name="salary" required><br>
+
+            <!-- Location -->
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required><br>
+
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <!-- Job Profile -->
+            <label for="job_profile">Job Profile:</label>
+            <input type="text" id="job_profile" name="job_profile" required></input><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
