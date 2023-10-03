@@ -1,5 +1,5 @@
 
-from flask import Blueprint, jsonify, current_app, request
+from flask import Blueprint, jsonify, current_app, request, render_template, url_for
 from influxdb import InfluxDBClient
 from datetime import datetime
 # Create a Blueprint object for the data module
@@ -20,36 +20,36 @@ def get_bulk_data():
     except Exception as e:
         return jsonify({'error': str(e)})
 
-@api_blueprint.route('/post-data', methods=['GET'])
+@api_blueprint.route('/post-data', methods=['POST', 'GET'])
 def post_data():
     try:
-        influx_client = create_client(current_app)
-        # data = request.get_json()  # Assuming data is posted as JSON
-
-        # Prepare data points
-        data_points = [
-            {
-                "measurement": "test_measurement2",
-                "tags": {
-                    "Job Profile": "Backend Developer",
-                },
-                "Application Timestamp": datetime.now().strftime("%m/%d/%Y, %H:%M:%S"),
-                "fields": {
-                    "Name": "John Doe",
-                    "Experience": "3",
-                    "Skills": "Python, Java, C#",
-                    "Role": "Software Engineer",
-                    "Salary": "100000",
-                    "Location": "New York, USA",
-                    "email": "XXXXXXXXXXXXXXXXXXX"
+        if request.method == 'GET':
+            return render_template('post_data.html')
+        else:
+            influx_client = create_client(current_app)
+            data = request.form.to_dict()
+            data_points = [
+                {
+                    "measurement": "test_measurement2",
+                    "tags": {
+                        "Job Profile": data["job_profile"],
+                    },
+                    "Application Timestamp": datetime.now().strftime("%m/%d/%Y, %H:%M:%S"),
+                    "fields": {
+                        "Name": data["name"],
+                        "Experience": data["experience"],
+                        "Skills": data["skills"],
+                        "Role": data["role"],
+                        "Salary": data["salary"],
+                        "Location": data["location"],
+                        "email": data["email"],
+                    }
                 }
-            }
-        ]
+            ]
 
-        influx_client.write_points(data_points)
-        influx_client.close()
-        return "Data posted successfully."
-
+            influx_client.write_points(data_points)
+            influx_client.close()
+            return jsonify({"message":  "Data posted successfully!"})
     except Exception as e:
         return f"Error: {str(e)}"
 

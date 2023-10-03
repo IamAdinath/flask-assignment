@@ -1,7 +1,7 @@
 from flask import Flask
 from data_api import api_blueprint
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="")
 # Configuration for InfluxDB (replace with your own values)
 app.config['INFLUXDB_HOST'] = 'localhost'
 app.config['INFLUXDB_PORT'] = 8086  # Replace with your InfluxDB port
