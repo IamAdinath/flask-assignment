@@ -39,10 +39,10 @@
 
 ## To get the Data visit [here](http://13.232.155.143:8000/api/post-data)
 
-![img_3.png](img_3.png)
+![img3.jpg](..%2F..%2F..%2FPictures%2FScreenshots%2Fimg3.jpg)
 
 ## To post data visit [here](http://13.232.155.143:8000/api/post-data)
-![img_1.png](img_1.png)
+![img1.jpg](..%2F..%2F..%2FPictures%2FScreenshots%2Fimg1.jpg)
 
 ## After Posting data 
-![img_2.png](img_2.png)
+![img2.jpg](..%2F..%2F..%2FPictures%2FScreenshots%2Fimg2.jpg)
